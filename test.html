@@ -1,17 +1,92 @@
+<!doctype html>
 <html>
+<style>
+body{
+	background-color: black;
+	color: white;
+}
+#center{
+	margin: 0px auto;
+	width: 1024px;
+}
+canvas{
+	margin-top: 20px;
+	background-color: white;
+}
+</style>
 <body>
-	<script>
-	var obj = function(a){
-		this.a = a;
-	}
-	obj.prototype.geta = function(){
-		return this.a;
+	<div id="center">
+	<input type="button" onclick="regenerate()" value="OK">
+	<canvas id="main" width="1024" height="600"></canvas>
+	</div>
+<script src="linelib.js"></script>
+<script>
+var c = document.getElementById("main");
+var ctx = c.getContext("2d");
+var z;
+var rects = [];
+var lines = [];
+var point;
+//degree -> radian
+var D2R = Math.PI / 180;
+//radian -> degree
+var R2D = 180 / Math.PI;
+
+//reflect bounds
+var b = 10;
+
+setCanvas(c);
+
+lines = [];
+for(var k = 0; k<1; k++)
+{
+	lines.push(new Line(D2R*(k+30), 200, 300, null, Color()));
+}
+rects[0] = new Rect(c.width-140,185,140,230);
+
+
+function draw()
+	{
+		lines[0].theta -= D2R*0.5;
+		for(var i=0; i<lines.length; i++)
+			getRLine(i,0);
+
+		ctx.clearRect(0,0,c.width, c.height);
+		ctx.font = "50px Sans-serif"	
+
+		for(var i=0; i<rects.length; i++)
+		{
+			rects[i].draw(ctx);
+		}
+
+		for(var i=0; i<lines.length; i++)
+		{
+
+			lines[i].draw(ctx);
+			//new Point(lines[i].ytox(300), 300).draw();
+		}
+
+		var b = lines[0].matchesRect(rects[0]);
+		ctx.fillStyle = 'black';
+		if(b == true)
+			ctx.fillText("true", 10, 50);
+		
+		else
+			ctx.fillText("false", 10, 50);
+		
+		ctx.font = "20px Sans-serif"
+		ctx.fillText(lines[0].ytox(0), 10, 100);
 	}
 
-	var obj1 = new obj("asdf");
-	var obj2 = new obj("zxcv");
-	alert(obj1.geta());
-	alert(obj2.geta());
-	</script>
+	z = setInterval(draw, 1000/60);
+
+function getRLine(i,j)
+{
+	lines[j+1] = lines[j].getReflectiveLine();
+	if(j < b-1)
+		setTimeout(function(){getRLine(i,j+1)}, 10);
+}
+
+</script>
 </body>
 </html>

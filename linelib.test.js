@@ -9,6 +9,8 @@ var D2R = Math.PI / 180;
 //radian -> degree
 var R2D = 180 / Math.PI;
 
+setCanvas(c);
+
 function regenerate()
 {
 var len = document.getElementById("linecount").value;
@@ -23,7 +25,7 @@ var b = document.getElementById("bounds").value;
 	lines = [];
 	for(var k = 0; k<len; k++)
 	{
-		lines.push([new Line(D2R*(k+Number(angle)), Number(sx), Number(sy), undefined, Color())]);
+		lines.push([new Line(D2R*(k+Number(angle)), Number(sx), Number(sy), null, Color())]);
 	}
 
 /*	for(var i=0; i<lines.length; i++)
@@ -37,7 +39,7 @@ if(b > 1)
 	{
 		lines[i][j+1] = lines[i][j].getReflectiveLine();
 		if(j < b-1)
-			setTimeout(function(){getRLine(i,j+1)}, 300);
+			setTimeout(function(){getRLine(i,j+1)}, 10);
 	}
 }
 
