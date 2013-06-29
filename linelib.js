@@ -197,7 +197,7 @@ var Square = function(x, y, len, center, color)
 {
 	if(center == true)
 	{
-		return new Rect(x-len/2, y-len/2, len, len, color);
+		return new Rect(x, y, len, len, color, center);
 	}
 	else
 	{
@@ -206,9 +206,19 @@ var Square = function(x, y, len, center, color)
 }
 
 
-var Rect = function(x, y, width, height, color)
+var Rect = function(x, y, width, height, color, center)
 {
-	this.x = x; this.y = y; this.width = width; this.height = height; this.color = color;
+	if(center == true)
+	{
+		this.x = x - width/2;
+		this.y = y - height/2;
+	}
+	else
+	{
+		this.x = x; 
+		this.y = y;
+	} 
+	this.width = width; this.height = height; this.color = color;
 
 	return this;
 }
