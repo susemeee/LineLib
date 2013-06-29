@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<style>
+body{
+	background-color: black;
+	color: white;
+}
+#center{
+	margin: 0px auto;
+	width: 1024px;
+}
+canvas{
+	margin-top: 20px;
+	background-color: white;
+}
+</style>
+<body>
+	<div id="center">
+	<h1>Reflective Line</h1>
+	How many lines? <input type="text" id="linecount" maxlength="3" size="3" value="1"> 
+	
+	color? <input type="text" id="color" value="red"> 
+
+	bound count? <input type="text" id="bounds" maxlength="3" size="3" value="2">
+	
+	starting angle? <input type="text" id="angle" maxlength="3" size="3" value="10">
+	
+	x, y ? <input type="text" id="x" maxlength="3" size="3" value="200"><input type="text" id="y" maxlength="3" size="3" value="300">
+	
+	<input type="button" onclick="regenerate()" value="OK">
+	<canvas id="main" width="1024" height="600"></canvas>
+	</div>
+<script src="linelib.js"></script>
+<script src="linelib.test.js"></script>
+</body>
+</html>
