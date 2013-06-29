@@ -5,6 +5,12 @@
  *
  */
 (function() {
+
+var setCanvas = function(canvas){
+	c = canvas;
+}
+//canvas
+var c;
 //degree -> radian
 var D2R = Math.PI / 180;
 //radian -> degree

@@ -1,0 +1,17 @@
+<html>
+<body>
+	<script>
+	var obj = function(a){
+		this.a = a;
+	}
+	obj.prototype.geta = function(){
+		return this.a;
+	}
+
+	var obj1 = new obj("asdf");
+	var obj2 = new obj("zxcv");
+	alert(obj1.geta());
+	alert(obj2.geta());
+	</script>
+</body>
+</html>
