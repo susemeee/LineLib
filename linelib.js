@@ -192,7 +192,7 @@ Line.prototype.matchesRect = function(rect){
 	}
 	return false;
 }
-var Square = function(x, y, len, center, color)
+var Square = function(x, y, len, color, center)
 {
 	if(center == true)
 	{
@@ -235,6 +235,15 @@ Rect.prototype.containsPoint = function(x,y){
 		return true;
 	else
 		return false;
+}
+
+Rect.prototype.matchesRect = function(arect){
+
+
+}
+
+Rect.prototype.rotate = function(rad){
+	
 }
 
 var Point = function(x,y){
